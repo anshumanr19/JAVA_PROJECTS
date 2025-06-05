@@ -1,10 +1,10 @@
 package spark_batch.basic_projects.pizzabillgenerator;
 
-public class DeluxPizza extends Pizza {
+public class DeluxPizza extends BasePizza {
 
     public DeluxPizza(boolean isVeg) {
         super(isVeg);
-        super.addExtraCheese();
-        super.addExtraToppings();
+        addExtraCheese();
+        addExtraToppings();
     }
 }

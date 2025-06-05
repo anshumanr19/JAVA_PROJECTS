@@ -15,7 +15,7 @@ public class BillGenerator {
         if (pizzaType.equalsIgnoreCase("base")) {
             System.out.print("Do you want a Veg pizza? (true/false): ");
             boolean isVeg = in.nextBoolean();
-            myPizza = new Pizza(isVeg);
+            myPizza = new BasePizza(isVeg);
 
             System.out.print("Add extra cheese? (true/false): ");
             if (in.nextBoolean()) myPizza.addExtraCheese();
