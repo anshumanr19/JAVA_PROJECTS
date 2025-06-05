@@ -6,39 +6,42 @@ public class BillGenerator {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
 
-        System.out.println("Welcome to pizza shop");
-        System.out.print("Do you want a base pizza or dilux pizza : ");
-        String pizzaType = in.nextLine();
+        System.out.println("🍕 Welcome to the Pizza Shop!");
+        System.out.print("Choose your pizza type (Base/Delux): ");
+        String pizzaType = in.nextLine().trim();
 
         Pizza myPizza = null;
 
         if (pizzaType.equalsIgnoreCase("base")) {
-            System.out.println("Veg? ");
+            System.out.print("Do you want a Veg pizza? (true/false): ");
             boolean isVeg = in.nextBoolean();
-            if (isVeg) {
-                myPizza = new Pizza(true);
-            } else myPizza = new Pizza(false);
+            myPizza = new Pizza(isVeg);
 
-            System.out.println("Do you want extra cheese: ");
-            boolean extraCheese = in.nextBoolean();
-            if (extraCheese) myPizza.addExtraCheese();
+            System.out.print("Add extra cheese? (true/false): ");
+            if (in.nextBoolean()) myPizza.addExtraCheese();
 
-            System.out.println("Do you want extra toppings: ");
-            boolean extraTopping = in.nextBoolean();
-            if (extraTopping) myPizza.addExtraToppings();
+            System.out.print("Add extra toppings? (true/false): ");
+            if (in.nextBoolean()) myPizza.addExtraToppings();
 
-            System.out.println("Take away?");
+            System.out.print("Do you want take away? (true/false): ");
             if (in.nextBoolean()) myPizza.takeAway();
-        } else if (pizzaType.equalsIgnoreCase("dilux")){
-            System.out.println("Veg or Non-veg? ");
+
+        } else if (pizzaType.equalsIgnoreCase("delux")) {
+            System.out.print("Do you want a Veg Delux pizza? (true/false): ");
             boolean isVeg = in.nextBoolean();
-            if (isVeg) myPizza = new DiluxPizza(true);
-            else myPizza = new DiluxPizza(false);
+            myPizza = new DeluxPizza(isVeg);
 
-            System.out.println("Take away?");
+            System.out.print("Do you want take away? (true/false): ");
             if (in.nextBoolean()) myPizza.takeAway();
+        } else {
+            System.out.println("Invalid pizza type selected.");
+            in.close();
+            return;
         }
 
-        myPizza.getBill();
+        System.out.println("\n====== 🧾 Final Bill ======");
+        System.out.println(myPizza.getBill());
+
+        in.close();
     }
 }
