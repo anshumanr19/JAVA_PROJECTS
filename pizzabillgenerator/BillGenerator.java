@@ -29,7 +29,7 @@ public class BillGenerator {
         } else if (pizzaType.equalsIgnoreCase("delux")) {
             System.out.print("Do you want a Veg Delux pizza? (true/false): ");
             boolean isVeg = in.nextBoolean();
-            myPizza = new DeluxPizza(isVeg);
+            myPizza = new DeluxPizza(new BasePizza(isVeg));
 
             System.out.print("Do you want take away? (true/false): ");
             if (in.nextBoolean()) myPizza.takeAway();
